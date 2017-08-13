@@ -51,7 +51,7 @@ namespace LogonSecurity
             logs = new Queue<string>();
 
             string ProgramExePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string LogsFolder = Path.Combine(Path.GetDirectoryName(ProgramExePath), "logs");
+            string LogsFolder = Path.Combine(Path.GetDirectoryName(ProgramExePath), "LogonSecurity_logs");
             Directory.CreateDirectory(LogsFolder);
 
             while (!Config.NeedToStop)
