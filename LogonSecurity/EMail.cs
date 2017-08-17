@@ -28,7 +28,7 @@ namespace LogonSecurity
             smtpClient.Send(msg);
 
             if (Config.log.Email)
-                Log.Add("MessageID # " + MessageID + ". Email Sended " + ToEmail + ". Subject: " + Title);
+                Log.Add("MessageID # " + MessageID + ". Email Sended to " + ToEmail + ". Subject: " + Title);
         }
     }
 }
