@@ -137,7 +137,10 @@ namespace LogonSecurity
                 Log.Add("Вход. " + Message);
 
             if (usr.NotifySuccessLogon)
-                EMail.Send(usr.ToEmail, "Вход", Message);
+            {
+                string Title = "Вход " + Environment.MachineName.ToString() + "\\" + UserName;
+                EMail.Send(usr.ToEmail, Title, Message);
+            }
 
 
             user.SetNewPassword(usr);
@@ -155,12 +158,15 @@ namespace LogonSecurity
             if (usr == null)
                 return;
 
-            string Message = Time + " с " + FromPC + " Вход в " + UserName + " (Существующий сеанс)";
+            string Message = Time + " с " + FromPC + " Вход в " + Environment.MachineName.ToString() + "\\" + UserName + " (Существующий сеанс)";
             if (Config.log.Event)
                 Log.Add("Вход. " + Message);
 
             if (usr.NotifySuccessLogon)
-                EMail.Send(usr.ToEmail, "Вход", Message);
+            {
+                string Title = "Вход " + Environment.MachineName.ToString() + "\\" + UserName;
+                EMail.Send(usr.ToEmail, Title, Message);
+            }
 
             user.SetNewPassword(usr);
         }
@@ -484,14 +490,15 @@ namespace LogonSecurity
             string CurrentPassword = "";
             if (ErrorCode == "0x0")
             {
-                Title = "Вход";
+                Title = "Вход " + Environment.MachineName.ToString() + "\\" + UserName;
                 Message = Time + " с " + FromPC + " Вход в " + Environment.MachineName.ToString() + "\\" + UserName;
             }
             else
             {
-                Title = "Попытка входа";
+                Title = "Попытка входа " + Environment.MachineName.ToString() + "\\" + UserName;
                 Message = Time + " с " + FromPC + " попытка подключения к " + Environment.MachineName.ToString() + "\\" + UserName;
-                CurrentPassword = " ##### Правильный пароль: " + usr.CurrentPassword;
+                if(usr.ChangePassword)
+                    CurrentPassword = " ##### Правильный пароль: " + usr.CurrentPassword;
             }
 
             if (Config.log.Event)
