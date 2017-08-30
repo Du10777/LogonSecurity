@@ -3,3 +3,4 @@ LogonSecurity/bin/Release/LogonSecurity.exe.config
 LogonSecurity/bin/Release/LogonSecurity.pdb
 LogonSecurity/bin/Release/*.vshost.*
 LogonSecurity/obj/
+LogonSecurity.suo
