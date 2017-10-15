@@ -52,6 +52,7 @@ namespace LogonSecurity
             Config.eMail.Login = ReadRegistry<string>(Config.eMail.Login, reg, "EMail.Login");
             Config.eMail.Password = ReadRegistry<string>(Config.eMail.Password, reg, "EMail.Password");
             Config.eMail.SSL = ReadRegistry<bool>(Config.eMail.SSL, reg, "EMail.SSL");
+            Config.eMail.ErrorRepeatSending = ReadRegistry<int>(Config.eMail.ErrorRepeatSending, reg, "EMail.ErrorRepeatSending");
             #endregion//EMail
 
             #region Users
@@ -186,6 +187,7 @@ namespace LogonSecurity
             WriteRegistry<string>(reg, "EMail.Login", Config.eMail.Login);
             WriteRegistry<string>(reg, "EMail.Password", Config.eMail.Password);
             WriteRegistry<bool>(reg, "EMail.SSL", Config.eMail.SSL);
+            WriteRegistry<int>(reg, "EMail.ErrorRepeatSending", Config.eMail.ErrorRepeatSending);
             #endregion//EMail
 
             #region Users

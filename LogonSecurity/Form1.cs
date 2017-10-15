@@ -30,6 +30,7 @@ namespace LogonSecurity
             EMail_Login_textBox.Text = Config.eMail.Login;
             EMail_Password_textBox.Text = Config.eMail.Password;
             EMail_SSL_checkBox.Checked = Config.eMail.SSL;
+            EMail_ErrorRepeatSending_numericUpDown.Value = Config.eMail.ErrorRepeatSending;
 
             foreach (user usr in Config.Users)
                 users_listBox.Items.Add(usr.Name);
@@ -159,6 +160,11 @@ namespace LogonSecurity
             Config.eMail.SSL = EMail_SSL_checkBox.Checked;
             Config.Save();
         }
+        private void EMail_ErrorRepeatSending_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            Config.eMail.ErrorRepeatSending = (int)EMail_ErrorRepeatSending_numericUpDown.Value;
+            Config.Save();
+        }
 
 
         private void users_add_button_Click(object sender, EventArgs e)
@@ -251,7 +257,14 @@ namespace LogonSecurity
             int Index = users_listBox.SelectedIndex;
             user usr = Config.Users[Index];
 
-            EMail.Send(usr.ToEmail, "Test", "test Message");
+            string ErrorMessage = EMail.trySendOnce(usr.ToEmail, "Test", "test Message");
+            if (ErrorMessage == String.Empty)
+            {
+                MessageBox.Show("Message sended");
+                return;
+            }
+
+            MessageBox.Show(ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 

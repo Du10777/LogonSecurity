@@ -77,6 +77,8 @@
             this.Log_Event_checkBox = new System.Windows.Forms.CheckBox();
             this.Log_Password_checkBox = new System.Windows.Forms.CheckBox();
             this.Log_EMail_checkBox = new System.Windows.Forms.CheckBox();
+            this.EMail_ErrorRepeatSending_label = new System.Windows.Forms.Label();
+            this.EMail_ErrorRepeatSending_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.tabControl.SuspendLayout();
             this.General_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PasswordLength_numericUpDown)).BeginInit();
@@ -91,6 +93,7 @@
             this.Users_splitContainer.Panel2.SuspendLayout();
             this.Users_splitContainer.SuspendLayout();
             this.Log_tabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EMail_ErrorRepeatSending_numericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -102,7 +105,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(603, 179);
+            this.tabControl.Size = new System.Drawing.Size(603, 204);
             this.tabControl.TabIndex = 0;
             // 
             // General_tabPage
@@ -121,7 +124,7 @@
             this.General_tabPage.Location = new System.Drawing.Point(4, 22);
             this.General_tabPage.Name = "General_tabPage";
             this.General_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.General_tabPage.Size = new System.Drawing.Size(595, 153);
+            this.General_tabPage.Size = new System.Drawing.Size(595, 178);
             this.General_tabPage.TabIndex = 0;
             this.General_tabPage.Text = "General";
             this.General_tabPage.UseVisualStyleBackColor = true;
@@ -157,11 +160,16 @@
             0,
             0,
             0});
+            this.LogTimer_numericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.LogTimer_numericUpDown.Name = "LogTimer_numericUpDown";
-            this.LogTimer_numericUpDown.Size = new System.Drawing.Size(71, 20);
+            this.LogTimer_numericUpDown.Size = new System.Drawing.Size(70, 20);
             this.LogTimer_numericUpDown.TabIndex = 12;
             this.LogTimer_numericUpDown.Value = new decimal(new int[] {
-            1000,
+            86400000,
             0,
             0,
             0});
@@ -180,11 +188,16 @@
             0,
             0,
             0});
+            this.PasswordTimer_numericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.PasswordTimer_numericUpDown.Name = "PasswordTimer_numericUpDown";
-            this.PasswordTimer_numericUpDown.Size = new System.Drawing.Size(71, 20);
+            this.PasswordTimer_numericUpDown.Size = new System.Drawing.Size(70, 20);
             this.PasswordTimer_numericUpDown.TabIndex = 11;
             this.PasswordTimer_numericUpDown.Value = new decimal(new int[] {
-            1000,
+            86400000,
             0,
             0,
             0});
@@ -192,6 +205,8 @@
             // 
             // EMail_groupBox
             // 
+            this.EMail_groupBox.Controls.Add(this.EMail_ErrorRepeatSending_numericUpDown);
+            this.EMail_groupBox.Controls.Add(this.EMail_ErrorRepeatSending_label);
             this.EMail_groupBox.Controls.Add(this.EMail_Port_numericUpDown);
             this.EMail_groupBox.Controls.Add(this.EMail_SSL_checkBox);
             this.EMail_groupBox.Controls.Add(this.label11);
@@ -205,7 +220,7 @@
             this.EMail_groupBox.Controls.Add(this.EMail_Address_textBox);
             this.EMail_groupBox.Location = new System.Drawing.Point(410, 3);
             this.EMail_groupBox.Name = "EMail_groupBox";
-            this.EMail_groupBox.Size = new System.Drawing.Size(180, 145);
+            this.EMail_groupBox.Size = new System.Drawing.Size(180, 170);
             this.EMail_groupBox.TabIndex = 10;
             this.EMail_groupBox.TabStop = false;
             this.EMail_groupBox.Text = "E-Mail Configuration";
@@ -460,7 +475,7 @@
             this.users_tabPage.Location = new System.Drawing.Point(4, 22);
             this.users_tabPage.Name = "users_tabPage";
             this.users_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.users_tabPage.Size = new System.Drawing.Size(595, 153);
+            this.users_tabPage.Size = new System.Drawing.Size(595, 178);
             this.users_tabPage.TabIndex = 1;
             this.users_tabPage.Text = "users";
             this.users_tabPage.UseVisualStyleBackColor = true;
@@ -489,7 +504,7 @@
             this.Users_splitContainer.Panel2.Controls.Add(this.user_Name_textBox);
             this.Users_splitContainer.Panel2.Controls.Add(this.user_Name_label);
             this.Users_splitContainer.Panel2.Enabled = false;
-            this.Users_splitContainer.Size = new System.Drawing.Size(589, 147);
+            this.Users_splitContainer.Size = new System.Drawing.Size(589, 172);
             this.Users_splitContainer.SplitterDistance = 230;
             this.Users_splitContainer.TabIndex = 0;
             // 
@@ -609,7 +624,7 @@
             this.Log_tabPage.Location = new System.Drawing.Point(4, 22);
             this.Log_tabPage.Name = "Log_tabPage";
             this.Log_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.Log_tabPage.Size = new System.Drawing.Size(595, 153);
+            this.Log_tabPage.Size = new System.Drawing.Size(595, 178);
             this.Log_tabPage.TabIndex = 2;
             this.Log_tabPage.Text = "Log";
             this.Log_tabPage.UseVisualStyleBackColor = true;
@@ -658,11 +673,48 @@
             this.Log_EMail_checkBox.UseVisualStyleBackColor = true;
             this.Log_EMail_checkBox.CheckedChanged += new System.EventHandler(this.Log_EMail_checkBox_CheckedChanged);
             // 
+            // EMail_ErrorRepeatSending_label
+            // 
+            this.EMail_ErrorRepeatSending_label.AutoSize = true;
+            this.EMail_ErrorRepeatSending_label.Location = new System.Drawing.Point(5, 146);
+            this.EMail_ErrorRepeatSending_label.Name = "EMail_ErrorRepeatSending_label";
+            this.EMail_ErrorRepeatSending_label.Size = new System.Drawing.Size(112, 13);
+            this.EMail_ErrorRepeatSending_label.TabIndex = 15;
+            this.EMail_ErrorRepeatSending_label.Text = "Error Repeat Sending:";
+            // 
+            // EMail_ErrorRepeatSending_numericUpDown
+            // 
+            this.EMail_ErrorRepeatSending_numericUpDown.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.EMail_ErrorRepeatSending_numericUpDown.Location = new System.Drawing.Point(113, 144);
+            this.EMail_ErrorRepeatSending_numericUpDown.Maximum = new decimal(new int[] {
+            3600000,
+            0,
+            0,
+            0});
+            this.EMail_ErrorRepeatSending_numericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.EMail_ErrorRepeatSending_numericUpDown.Name = "EMail_ErrorRepeatSending_numericUpDown";
+            this.EMail_ErrorRepeatSending_numericUpDown.Size = new System.Drawing.Size(64, 20);
+            this.EMail_ErrorRepeatSending_numericUpDown.TabIndex = 16;
+            this.EMail_ErrorRepeatSending_numericUpDown.Value = new decimal(new int[] {
+            3600000,
+            0,
+            0,
+            0});
+            this.EMail_ErrorRepeatSending_numericUpDown.ValueChanged += new System.EventHandler(this.EMail_ErrorRepeatSending_numericUpDown_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 179);
+            this.ClientSize = new System.Drawing.Size(603, 204);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
@@ -686,6 +738,7 @@
             this.Users_splitContainer.ResumeLayout(false);
             this.Log_tabPage.ResumeLayout(false);
             this.Log_tabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EMail_ErrorRepeatSending_numericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -741,6 +794,8 @@
         private System.Windows.Forms.CheckBox Log_Password_checkBox;
         private System.Windows.Forms.CheckBox Log_EMail_checkBox;
         private System.Windows.Forms.CheckBox Log_Work_checkBox;
+        private System.Windows.Forms.Label EMail_ErrorRepeatSending_label;
+        private System.Windows.Forms.NumericUpDown EMail_ErrorRepeatSending_numericUpDown;
     }
 }
 
