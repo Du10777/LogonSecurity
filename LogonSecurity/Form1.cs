@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace LogonSecurity
 {
@@ -13,6 +14,8 @@ namespace LogonSecurity
         public Form1()
         {
             InitializeComponent();
+
+            this.Text = "LogonSecurity v" + Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
             PasswordTimer_numericUpDown.Value = Config.ChangePasswordEveryMilliseconds;
             LogTimer_numericUpDown.Value = Config.ReadLogEveryMilliseconds;

@@ -73,10 +73,10 @@
             this.user_Name_textBox = new System.Windows.Forms.TextBox();
             this.user_Name_label = new System.Windows.Forms.Label();
             this.Log_tabPage = new System.Windows.Forms.TabPage();
+            this.Log_Work_checkBox = new System.Windows.Forms.CheckBox();
             this.Log_Event_checkBox = new System.Windows.Forms.CheckBox();
             this.Log_Password_checkBox = new System.Windows.Forms.CheckBox();
             this.Log_EMail_checkBox = new System.Windows.Forms.CheckBox();
-            this.Log_Work_checkBox = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.General_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PasswordLength_numericUpDown)).BeginInit();
@@ -614,6 +614,17 @@
             this.Log_tabPage.Text = "Log";
             this.Log_tabPage.UseVisualStyleBackColor = true;
             // 
+            // Log_Work_checkBox
+            // 
+            this.Log_Work_checkBox.AutoSize = true;
+            this.Log_Work_checkBox.Location = new System.Drawing.Point(3, 75);
+            this.Log_Work_checkBox.Name = "Log_Work_checkBox";
+            this.Log_Work_checkBox.Size = new System.Drawing.Size(52, 17);
+            this.Log_Work_checkBox.TabIndex = 3;
+            this.Log_Work_checkBox.Text = "Work";
+            this.Log_Work_checkBox.UseVisualStyleBackColor = true;
+            this.Log_Work_checkBox.CheckedChanged += new System.EventHandler(this.Log_Work_checkBox_CheckedChanged);
+            // 
             // Log_Event_checkBox
             // 
             this.Log_Event_checkBox.AutoSize = true;
@@ -646,17 +657,6 @@
             this.Log_EMail_checkBox.Text = "E-Mail send";
             this.Log_EMail_checkBox.UseVisualStyleBackColor = true;
             this.Log_EMail_checkBox.CheckedChanged += new System.EventHandler(this.Log_EMail_checkBox_CheckedChanged);
-            // 
-            // Log_Work_checkBox
-            // 
-            this.Log_Work_checkBox.AutoSize = true;
-            this.Log_Work_checkBox.Location = new System.Drawing.Point(3, 75);
-            this.Log_Work_checkBox.Name = "Log_Work_checkBox";
-            this.Log_Work_checkBox.Size = new System.Drawing.Size(52, 17);
-            this.Log_Work_checkBox.TabIndex = 3;
-            this.Log_Work_checkBox.Text = "Work";
-            this.Log_Work_checkBox.UseVisualStyleBackColor = true;
-            this.Log_Work_checkBox.CheckedChanged += new System.EventHandler(this.Log_Work_checkBox_CheckedChanged);
             // 
             // Form1
             // 

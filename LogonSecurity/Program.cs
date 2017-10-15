@@ -5,7 +5,7 @@ using System.ServiceProcess;
 using System.Windows.Forms;
 
 //todo:
-//  - Ведение версии
+//  + Ведение версии
 //  - Действия по отправке сообщения
 //      - логоф
 //      - блокировка учетки
