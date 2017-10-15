@@ -42,6 +42,26 @@ namespace LogonSecurity
             Log_Event_checkBox.Checked = Config.log.Password;
             Log_Work_checkBox.Checked = Config.log.Work;
         }
+        void InterfaceEnabled(bool Value)
+        {
+            UnInstall_button.Enabled = Value;
+
+            PasswordTimer_numericUpDown.Enabled = Value;
+            LogTimer_numericUpDown.Enabled = Value;
+            PasswordLength_numericUpDown.Enabled = Value;
+            PasswordChars_textBox.Enabled = Value;
+            IgnoreOldLogs_button.Enabled = Value;
+
+            EMail_groupBox.Enabled = Value;
+
+            TabPageEnable(users_tabPage, Value);
+            TabPageEnable(Log_tabPage, Value);
+        }
+        void TabPageEnable(TabPage tabPage, bool Enabled)
+        {
+            foreach (Control ctl in tabPage.Controls)
+                ctl.Enabled = Enabled;
+        }
 
         private void PasswordTimer_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -89,9 +109,15 @@ namespace LogonSecurity
                 ServiceStatus_label.Text = "Status: " + Status;
 
                 if (Status == "Stopped")
+                {
                     Stop_button.Enabled = false;
+                    InterfaceEnabled(true);
+                }
                 if (Status == "Running")
+                {
                     Start_button.Enabled = false;
+                    InterfaceEnabled(false);
+                }
             }
             else
             {

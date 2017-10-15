@@ -138,10 +138,10 @@
             0,
             0});
             this.PasswordLength_numericUpDown.Name = "PasswordLength_numericUpDown";
-            this.PasswordLength_numericUpDown.Size = new System.Drawing.Size(71, 20);
+            this.PasswordLength_numericUpDown.Size = new System.Drawing.Size(44, 20);
             this.PasswordLength_numericUpDown.TabIndex = 13;
             this.PasswordLength_numericUpDown.Value = new decimal(new int[] {
-            8,
+            1000,
             0,
             0,
             0});
