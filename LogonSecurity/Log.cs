@@ -16,17 +16,46 @@ namespace LogonSecurity
 
         public static void Open(string fileName)
         {
-            fs = new FileStream(fileName, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
-            file = new StreamWriter(fs);
+            try
+            {
+                string LogsFolder = Path.GetDirectoryName(fileName);
+                Directory.CreateDirectory(LogsFolder);
+
+                fs = new FileStream(fileName, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+                file = new StreamWriter(fs);
+            }
+            catch (Exception ex)
+            {
+                string Message = "Can not open log file\r\n";
+                Message += "FileName: " + fileName + "\r\n";
+                Message += "FileMode: Append\r\n";
+                Message += "FileAcces: Write\r\n";
+                Message += "FileShare: ReadWrite\r\n";
+                Message += "\r\n";
+                Message += "Error message: " + ex.Message;
+
+                Events.WriteEventLog(Message, System.Diagnostics.EventLogEntryType.Error, 10);
+            }
         }
 
         public static void Close()
         {
-            file.Dispose();
-            file.Close();
+            try
+            {
+                file.Dispose();
+                file.Close();
 
-            fs.Dispose();
-            fs.Close();
+                fs.Dispose();
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                string Message = "Can not close log file\r\n";
+                Message += "\r\n";
+                Message += "Error message: " + ex.Message;
+
+                Events.WriteEventLog(Message, System.Diagnostics.EventLogEntryType.Error, 12);
+            }
         }
 
         public static void Add(string Message)
@@ -52,7 +81,6 @@ namespace LogonSecurity
 
             string ProgramExePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string LogsFolder = Path.Combine(Path.GetDirectoryName(ProgramExePath), "LogonSecurity_logs");
-            Directory.CreateDirectory(LogsFolder);
 
             while (!Config.NeedToStop)
             {
@@ -72,7 +100,24 @@ namespace LogonSecurity
 
         static void SaveToDisk(string Value)
         {
-            file.WriteLine(Value);
+            try
+            {
+                file.WriteLine(Value);
+            }
+            catch (Exception ex)
+            {
+                FileStream fs = (FileStream)file.BaseStream;
+                string logFileName = fs.Name;
+
+                string Message = "Can not write message to log file\r\n";
+                Message += "FileName: " + logFileName + "\r\n";
+                Message += "Log Message: " + Value + "\r\n";
+                Message += "\r\n";
+                Message += "Error message: " + ex.Message;
+
+                Events.WriteEventLog(Message, System.Diagnostics.EventLogEntryType.Error, 11);
+            }
+
         }
 
 

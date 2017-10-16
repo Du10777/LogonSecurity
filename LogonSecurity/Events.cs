@@ -523,6 +523,12 @@ namespace LogonSecurity
             IgnoreLogs = false;
         }
 
+        public static void WriteEventLog(string Message, EventLogEntryType EventType = EventLogEntryType.Information, int EventID = 0)
+        {
+            EventLog.WriteEntry("LogonSecurity", Message, EventType, EventID);
+        }
+
+
         static void LoggingTurnOn() { }
     }
 }
