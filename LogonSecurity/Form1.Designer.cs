@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.General_tabPage = new System.Windows.Forms.TabPage();
             this.PasswordLength_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LogTimer_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PasswordTimer_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.EMail_groupBox = new System.Windows.Forms.GroupBox();
+            this.EMail_ErrorRepeatSending_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.EMail_ErrorRepeatSending_label = new System.Windows.Forms.Label();
             this.EMail_Port_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.EMail_SSL_checkBox = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -77,14 +80,14 @@
             this.Log_Event_checkBox = new System.Windows.Forms.CheckBox();
             this.Log_Password_checkBox = new System.Windows.Forms.CheckBox();
             this.Log_EMail_checkBox = new System.Windows.Forms.CheckBox();
-            this.EMail_ErrorRepeatSending_label = new System.Windows.Forms.Label();
-            this.EMail_ErrorRepeatSending_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.tabControl.SuspendLayout();
             this.General_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PasswordLength_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LogTimer_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PasswordTimer_numericUpDown)).BeginInit();
             this.EMail_groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EMail_ErrorRepeatSending_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EMail_Port_numericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.users_tabPage.SuspendLayout();
@@ -93,7 +96,6 @@
             this.Users_splitContainer.Panel2.SuspendLayout();
             this.Users_splitContainer.SuspendLayout();
             this.Log_tabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EMail_ErrorRepeatSending_numericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -224,6 +226,43 @@
             this.EMail_groupBox.TabIndex = 10;
             this.EMail_groupBox.TabStop = false;
             this.EMail_groupBox.Text = "E-Mail Configuration";
+            // 
+            // EMail_ErrorRepeatSending_numericUpDown
+            // 
+            this.EMail_ErrorRepeatSending_numericUpDown.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.EMail_ErrorRepeatSending_numericUpDown.Location = new System.Drawing.Point(113, 144);
+            this.EMail_ErrorRepeatSending_numericUpDown.Maximum = new decimal(new int[] {
+            3600000,
+            0,
+            0,
+            0});
+            this.EMail_ErrorRepeatSending_numericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.EMail_ErrorRepeatSending_numericUpDown.Name = "EMail_ErrorRepeatSending_numericUpDown";
+            this.EMail_ErrorRepeatSending_numericUpDown.Size = new System.Drawing.Size(64, 20);
+            this.EMail_ErrorRepeatSending_numericUpDown.TabIndex = 16;
+            this.EMail_ErrorRepeatSending_numericUpDown.Value = new decimal(new int[] {
+            3600000,
+            0,
+            0,
+            0});
+            this.EMail_ErrorRepeatSending_numericUpDown.ValueChanged += new System.EventHandler(this.EMail_ErrorRepeatSending_numericUpDown_ValueChanged);
+            // 
+            // EMail_ErrorRepeatSending_label
+            // 
+            this.EMail_ErrorRepeatSending_label.AutoSize = true;
+            this.EMail_ErrorRepeatSending_label.Location = new System.Drawing.Point(5, 146);
+            this.EMail_ErrorRepeatSending_label.Name = "EMail_ErrorRepeatSending_label";
+            this.EMail_ErrorRepeatSending_label.Size = new System.Drawing.Size(112, 13);
+            this.EMail_ErrorRepeatSending_label.TabIndex = 15;
+            this.EMail_ErrorRepeatSending_label.Text = "Error Repeat Sending:";
             // 
             // EMail_Port_numericUpDown
             // 
@@ -673,42 +712,11 @@
             this.Log_EMail_checkBox.UseVisualStyleBackColor = true;
             this.Log_EMail_checkBox.CheckedChanged += new System.EventHandler(this.Log_EMail_checkBox_CheckedChanged);
             // 
-            // EMail_ErrorRepeatSending_label
+            // timer
             // 
-            this.EMail_ErrorRepeatSending_label.AutoSize = true;
-            this.EMail_ErrorRepeatSending_label.Location = new System.Drawing.Point(5, 146);
-            this.EMail_ErrorRepeatSending_label.Name = "EMail_ErrorRepeatSending_label";
-            this.EMail_ErrorRepeatSending_label.Size = new System.Drawing.Size(112, 13);
-            this.EMail_ErrorRepeatSending_label.TabIndex = 15;
-            this.EMail_ErrorRepeatSending_label.Text = "Error Repeat Sending:";
-            // 
-            // EMail_ErrorRepeatSending_numericUpDown
-            // 
-            this.EMail_ErrorRepeatSending_numericUpDown.Increment = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.EMail_ErrorRepeatSending_numericUpDown.Location = new System.Drawing.Point(113, 144);
-            this.EMail_ErrorRepeatSending_numericUpDown.Maximum = new decimal(new int[] {
-            3600000,
-            0,
-            0,
-            0});
-            this.EMail_ErrorRepeatSending_numericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.EMail_ErrorRepeatSending_numericUpDown.Name = "EMail_ErrorRepeatSending_numericUpDown";
-            this.EMail_ErrorRepeatSending_numericUpDown.Size = new System.Drawing.Size(64, 20);
-            this.EMail_ErrorRepeatSending_numericUpDown.TabIndex = 16;
-            this.EMail_ErrorRepeatSending_numericUpDown.Value = new decimal(new int[] {
-            3600000,
-            0,
-            0,
-            0});
-            this.EMail_ErrorRepeatSending_numericUpDown.ValueChanged += new System.EventHandler(this.EMail_ErrorRepeatSending_numericUpDown_ValueChanged);
+            this.timer.Enabled = true;
+            this.timer.Interval = 500;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // Form1
             // 
@@ -727,6 +735,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PasswordTimer_numericUpDown)).EndInit();
             this.EMail_groupBox.ResumeLayout(false);
             this.EMail_groupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EMail_ErrorRepeatSending_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EMail_Port_numericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -738,7 +747,6 @@
             this.Users_splitContainer.ResumeLayout(false);
             this.Log_tabPage.ResumeLayout(false);
             this.Log_tabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EMail_ErrorRepeatSending_numericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -796,6 +804,7 @@
         private System.Windows.Forms.CheckBox Log_Work_checkBox;
         private System.Windows.Forms.Label EMail_ErrorRepeatSending_label;
         private System.Windows.Forms.NumericUpDown EMail_ErrorRepeatSending_numericUpDown;
+        private System.Windows.Forms.Timer timer;
     }
 }
 

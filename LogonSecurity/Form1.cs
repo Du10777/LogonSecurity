@@ -92,7 +92,7 @@ namespace LogonSecurity
 
         void ServiceInterfaceRefresh()
         {
-            System.Threading.Thread.Sleep(100);
+            //System.Threading.Thread.Sleep(100);
             if (Service.IsInstalled())
             {
                 Install_button.Enabled = false;
@@ -128,26 +128,31 @@ namespace LogonSecurity
                 ServiceStartType_comboBox.Enabled = false;
             }
         }
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            ServiceInterfaceRefresh();
+        }
+
         private void Install_button_Click(object sender, EventArgs e)
         {
             Service.Install();
-            ServiceInterfaceRefresh();
+            //ServiceInterfaceRefresh();
         }
         private void UnInstall_button_Click(object sender, EventArgs e)
         {
             Service.Stop();
             Service.UnInstall();
-            ServiceInterfaceRefresh();
+            //ServiceInterfaceRefresh();
         }
         private void Start_button_Click(object sender, EventArgs e)
         {
             Service.Start();
-            ServiceInterfaceRefresh();
+            //ServiceInterfaceRefresh();
         }
         private void Stop_button_Click(object sender, EventArgs e)
         {
             Service.Stop();
-            ServiceInterfaceRefresh();
+            //ServiceInterfaceRefresh();
         }
         private void ServiceStartType_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -314,5 +319,6 @@ namespace LogonSecurity
             Config.log.Work = Log_Work_checkBox.Checked;
             Config.Save();
         }
+
     }
 }
