@@ -309,6 +309,7 @@
             // 
             this.EMail_Password_textBox.Location = new System.Drawing.Point(67, 118);
             this.EMail_Password_textBox.Name = "EMail_Password_textBox";
+            this.EMail_Password_textBox.PasswordChar = '●';
             this.EMail_Password_textBox.Size = new System.Drawing.Size(102, 20);
             this.EMail_Password_textBox.TabIndex = 4;
             this.EMail_Password_textBox.TextChanged += new System.EventHandler(this.EMail_Password_textBox_TextChanged);
