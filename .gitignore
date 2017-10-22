@@ -5,3 +5,4 @@ LogonSecurity/bin/Release/*.vshost.*
 LogonSecurity/obj/
 LogonSecurity.suo
 LogonSecurity.suo
+LogonSecurity/bin/Release/LogonSecurity_logs/
