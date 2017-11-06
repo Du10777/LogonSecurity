@@ -83,6 +83,7 @@ using System.Windows.Forms;
 //  + Сделать документации
 //    + Как начать пользоваться
 //    + Как оно работает
+//  - Хранить конфиг в HKLM\SYSTEM\CurrentControlSet\services\LogonSecutity\Config
 
 namespace LogonSecurity
 {
